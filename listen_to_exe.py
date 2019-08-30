@@ -53,6 +53,7 @@ def parse_results(data):
 
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
     ordered_predictions = order_predictions(predictions)
+    print(ordered_predictions)
     return ordered_predictions
 
 process_command = "./ping"
