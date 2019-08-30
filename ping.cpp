@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     while (game) {
         std::cout << "Waiting to receive state" << std::endl;
         std::cerr<< "Waiting for line" << std::endl;
-        
+
         std::getline (std::cin, input_string);
 
         std::cout << "Received state!" << std::endl;
@@ -25,13 +25,14 @@ int main(int argc, char** argv)
 
             for (int i = 0; i < 420; i++) {
                 for (int j = 0; j < 6; j++) {
-                    input_data.set(0, 0, 0, i, j, string_num);
+                    input_data.set(0, 0, 0, i, j, input_string[i][j]);
                 }
             }
 
             const auto result = model.predict({input_data});
             std::cerr << "output: " << fdeep::show_tensor5s(result) << std::endl;
             input_string = "";
+            game = false; // since we are currently YOLO just negate this logic for now
         } else {
             game = false;
         }
