@@ -20,9 +20,9 @@ def _read_output(proc):
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
         out_line = proc.stdout.readline().decode('utf-8').encode('utf-8')
-        print("len: ", len(out_line), out_line[0], out_line[0:7])
+        #print("len: ", len(out_line), out_line[0:6])
         if len(out_line) >= 6:
-            if out_line[0:6] == "outline":
+            if out_line.find("output") != - 1:
                 data = out_line[8:]
                 predictions = parse_results(data)
             else:
