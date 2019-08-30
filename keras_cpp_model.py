@@ -44,6 +44,7 @@ class KerasCPPModel:
         except:
             print("TIMEOUT")
             outs, errs = self.proc.communicate()
+            print("ICIT: ", errs)
         return self.parse_results(errs)
 
     def shut_off(self):
