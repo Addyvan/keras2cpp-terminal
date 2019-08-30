@@ -43,4 +43,6 @@ class KerasCPPModel:
 
 if __name__ == "__main__":
     model = KerasCPPModel()
+    print("model loaded")
     predictions = model.predict(1)
+    print("predictions: ", predictions)
