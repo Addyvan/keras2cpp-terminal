@@ -20,7 +20,9 @@ class KerasCPPModel:
         while True:
             line = self.proc.stderr.readline()
             if line.find("Waiting for line") != - 1:
+                self.proc.stdin.flush()
                 break
+            
         print("model initialized to python")
 
     def order_predictions(self, predictions):
@@ -44,10 +46,11 @@ class KerasCPPModel:
 
         print("HERE")
         self.proc.stdin.write(str(0).encode('utf-8'))
+        self.proc.stdin.flush()
         print("THERE")
         while True:
             print("HER2")
-            line = self.proc.stderr.read()
+            line = self.proc.stderr.readline()
             print("ICIT", line)
             if line.find("output") != - 1:
                 break
