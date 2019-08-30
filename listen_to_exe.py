@@ -52,4 +52,6 @@ except:
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
 outs, errs = proc.communicate(input=b'1')[0]
-print("python: ",  errs.decode())
+
+print("ERRS: ", errs)
+#print("python: ",  errs.decode())
