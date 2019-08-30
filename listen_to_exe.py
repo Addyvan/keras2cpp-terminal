@@ -29,6 +29,7 @@ def _read_output(proc):
         #print("len: ", len(out_line), out_line[0:6])
         if len(out_line) >= 0:
             if out_line.find("output") != - 1:
+                print("HERE MOTHERFUCKER")
                 data = out_line[8:]
                 predictions = parse_results(data)
                 print("predictions: ", predictions)
