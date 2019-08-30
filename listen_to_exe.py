@@ -1,5 +1,5 @@
 import sys
-from subprocess import Popen, PIPE,TimeoutExpired
+from subprocess import Popen, PIPE
 
 def is_number(s):
     try:
@@ -35,7 +35,7 @@ proc = Popen(process_command, shell=True, stdout=PIPE, stderr=sys.stderr, stdin=
 try:
     while proc.returncode == None:
         outs , errs = _read_output(proc)
-except TimeoutExpired:
+except:
     print("TimeoutExpired: \n")
     outs, errs = proc.communicate()
     print("OUTS: ", outs, "ERRS: ", errs)
