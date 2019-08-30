@@ -23,9 +23,11 @@ int main(int argc, char** argv)
 
             fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
 
+            int index = 0;
             for (int i = 0; i < 420; i++) {
                 for (int j = 0; j < 6; j++) {
-                    input_data.set(0, 0, 0, i, j, input_string[i][j]);
+                    input_data.set(0, 0, 0, i, j, input_string[index]);
+                    index++;
                 }
             }
 
