@@ -46,9 +46,8 @@ def parse_results(data):
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
 
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-    print(predictions)
-    print(predictions.sort())
-    #return predictions
+    predictions = predictions/sum(predictions)
+    return predictions
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
