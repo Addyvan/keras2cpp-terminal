@@ -12,11 +12,13 @@ int main() //int argc, char** argv
     std::string input_string;
     std::getline (std::cin, input_string);
 
+    char string_num = input_string[0];
+
     fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
 
     for (int i = 0; i < 420; i++) {
         for (int j = 0; j < 6; j++) {
-            input_data.set(0, 0, 0, i, j, atof(input_string[0]));
+            input_data.set(0, 0, 0, i, j, atof(string_num));
         }
     }
 
