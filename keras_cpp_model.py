@@ -40,7 +40,8 @@ class KerasCPPModel:
 
         try:
             while proc.poll() == None:
-                out_line = proc.stderr.readline().decode('utf-8').encode('utf-8')
+                errs = proc.stderr.readline().decode('utf-8').encode('utf-8')
+                print(errs)
         except:
             print("ERROR")
         return self.parse_results(errs)
