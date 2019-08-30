@@ -35,5 +35,5 @@ class KerasModel {
 
 extern "C" {
     KerasModel* KerasModel_new(const std::string& model_path){ return new KerasModel(model_path); }
-    void KerasModel_init(KerasModel* kerasmodel, const std::string& model_path){ kerasmodel->init(model_path); }
+    //void KerasModel_init(KerasModel* kerasmodel, const std::string& model_path){ kerasmodel->init(model_path); }
 }
