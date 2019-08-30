@@ -19,7 +19,7 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=None, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
             if line.find("Waiting for line") != - 1:
@@ -56,7 +56,7 @@ class KerasCPPModel:
     def shut_off(self):
         self.proc.stdin.write("END_GAME".encode('utf-8'))
 
-
+"""
 if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
@@ -69,3 +69,4 @@ if __name__ == "__main__":
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
+"""
