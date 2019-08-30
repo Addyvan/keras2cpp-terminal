@@ -1,6 +1,7 @@
 from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
+import time
 """
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -51,7 +52,9 @@ except:
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
-outs, errs = proc.communicate(input=b'1')
+for i in range(5):
+    outs, errs = proc.communicate(input=str(i))
+    time.sleep(2)
 
-print("ERRS: ", errs)
+
 #print("python: ",  errs.decode())
