@@ -32,6 +32,7 @@ class KerasCPPModel:
         return ordered_predictions
 
     def predict(self, i):
+        print("predicting")
         try:
             self.proc.stdin.write(str(i).encode('utf-8'))
             outs, errs = self.proc.communicate()
