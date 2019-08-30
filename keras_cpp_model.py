@@ -2,7 +2,6 @@ from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
 import random
-import time
 
 def is_number(s):
     try:
@@ -41,7 +40,7 @@ class KerasCPPModel:
 
         try:
             self.proc.stdin.write(state_string.encode('utf-8'))
-            outs, errs = self.proc.communicate()
+            errs = self.proc.stderr
         except:
             print("TIMEOUT")
             outs, errs = self.proc.communicate()
