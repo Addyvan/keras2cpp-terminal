@@ -45,7 +45,7 @@ def parse_results(data):
     
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
     for e in data:
-        print(type(e))
+        print(type(str(e))
     #predictions = [float(pred) for pred in data]
     #print(predictions)
     #print(predictions.sort())
