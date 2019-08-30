@@ -41,14 +41,20 @@ def is_number(s):
     except ValueError:
         return False
 
+def order_predictions(predictions):
+    sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1])]
+
+    print("index_array", sorted_preds)
+    #print("values: ", [{}])
+
+
 def parse_results(data):
     data = data.decode('utf-8')
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
 
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-    #predictions = [pred/sum(predictions) for pred in predictions]
-    print(predictions.sort())
-    return predictions
+    ordered_predictions = order_predictions(predictions)
+    return ordered_predictions
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
