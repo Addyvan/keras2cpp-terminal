@@ -6,9 +6,9 @@
 int main()
 {
   const auto model = fdeep::load_model("./fdeep_ping.json");
-  vector< vector<int> > input_data(420);
+  std::vector< std::vector<int> > input_data(420);
   for (int i = 0; i < 420; i++) {
-      input_data[i] = vector<int>(6);
+      input_data[i] = std::vector<int>(6);
       for (int j = 0; j < 6; j++) {
           input_data[i][j] = 3;
       }
