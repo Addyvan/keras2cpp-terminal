@@ -41,8 +41,10 @@ class KerasCPPModel:
         self.proc.stdin.write(state_string.encode('utf-8'))
         response = False
         while not response:
+            print("icit")
             errs = self.proc.stderr.readline().decode('utf-8').encode('utf-8')
             print(errs)
+            print("laba")
             response = True
 
         return self.parse_results(errs)
