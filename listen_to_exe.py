@@ -16,7 +16,8 @@ def parse_results(arr, data):
     predictions = []
     for char in data:
         if is_number(char):
-            predictions.append(int(char)) 
+            predictions.append(int(char))
+    print(predictions)
     return predictions
 
 def _read_output(proc):
@@ -44,4 +45,3 @@ try:
         outs , errs = _read_output(proc)
 except:
     outs, errs = proc.communicate()
-    print("OUTS: ", outs, "ERRS: ", errs)
