@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv)
 {
-    std::cout<< "You have entered " << argc << "arguments";
+    std::cout<< "You have entered " << argc << "arguments" << std::endl ;
 
     const auto model = fdeep::load_model("./fdeep_ping.json");
 
