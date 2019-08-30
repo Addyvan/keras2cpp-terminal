@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rm ./replays*
+rm ./replays/*
