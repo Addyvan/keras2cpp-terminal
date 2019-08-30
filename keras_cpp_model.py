@@ -19,7 +19,6 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
-            print("HERE ", line)
             if line.find("Waiting for line") != - 1:
                 break
         print("model initialized to python")
@@ -46,10 +45,10 @@ class KerasCPPModel:
         self.proc.stdin.write(state_string.encode('utf-8'))
         while True:
             line = self.proc.stderr.readline()
-            if len(line) == 0:
+            if line.find("output") != - 1:
                 break
 
-        return self.parse_results(line)
+        return self.parse_results(line.decode('utf-8').encode('utf-8'))
 
     def shut_off(self):
         self.proc.stdin.write("END_GAME".encode('utf-8'))
