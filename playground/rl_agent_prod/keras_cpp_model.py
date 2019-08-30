@@ -22,9 +22,7 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
-            eprint("HERE: ", line)
             if line.find("Waiting for line") != - 1:
-                self.proc.stdin.flush()
                 break
             
         eprint("model initialized to python")

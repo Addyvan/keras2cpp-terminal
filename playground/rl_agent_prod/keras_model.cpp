@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv)
 {
-    //std::cout<< "You have entered " << argv[1] << " for all values" << std::endl ;
+    std::cout<< "You have entered " << argv[1] << std::endl ;
     const auto model = fdeep::load_model(argv[1]);
 
     bool game = true;
