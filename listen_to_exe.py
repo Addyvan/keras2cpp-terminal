@@ -42,12 +42,9 @@ def is_number(s):
         return False
 
 def parse_results(data):
-    print("parsing predictions   --- ", data)
-    predictions = []
-    for char in data:
-        if is_number(char):
-            predictions.append(int(char))
-    print(predictions)
+    
+    data = data.replace("[", "").replace("]", "")
+    print(data.split(","))
     return predictions
 
 process_command = "./ping"
