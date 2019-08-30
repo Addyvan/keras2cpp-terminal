@@ -13,6 +13,7 @@ class Foo(object):
 
 if __name__ == "__main__":
     foo = Foo("suh")
+    foo.predict()
     #foo.init("./fdeep_ping.json")
 
     #print(model)
