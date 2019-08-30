@@ -6,11 +6,11 @@
 
 class KerasModel {
     
-    fdeep::model model;
+    //fdeep::model model;
     public:
 
         void init(std::string model_path) {
-            this->model = fdeep::load_model(model_path);
+            fdeep::model = fdeep::load_model(model_path);
         }
 
 
