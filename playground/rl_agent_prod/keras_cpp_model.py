@@ -49,10 +49,9 @@ class KerasCPPModel:
         write = self.proc.stdin.write(str(state_string).encode('utf-8'))
         self.proc.stdin.flush()
         
-        print("HERE1  ", self.proc.stderr.readline())
-        print("HERE2  ", self.proc.stderr.readline())
-        print("HERE3  ", self.proc.stderr.readline())
-        print("HERE4  ", self.proc.stderr.readline())
+        while self.proc.poll() is None:
+            output = self.proc.stderr.readline()
+            print("HERE  ", output)
 
         #outs, errs = self.proc.communicate()
             
