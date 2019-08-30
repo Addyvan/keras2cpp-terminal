@@ -14,8 +14,8 @@ process_command = "./main"
 proc = Popen(process_command, shell=True, stdout=PIPE, stderr=sys.stderr, stdin=PIPE)
 
 try:
-    while self.proc.returncode == None and not self.chill:
-        outs , errs = self._read_output(self.proc)
+    while proc.returncode == Nonechill:
+        outs , errs = _read_output(proc)
 except TimeoutExpired:
     print("TimeoutExpired: \n")
     outs, errs = proc.communicate()
