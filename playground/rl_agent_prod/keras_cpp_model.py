@@ -11,8 +11,8 @@ def is_number(s):
         return False
 
 class KerasCPPModel:
-    def __init__(self, process_command="./ping ./fdeep_ping.json"):
-        self.process_command = process_command
+    def __init__(self, process_command="./fdeep_ping.json"):
+        self.process_command = "./keras_model " + process_command
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):

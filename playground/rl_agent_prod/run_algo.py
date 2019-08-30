@@ -71,7 +71,7 @@ class RLProdBot(AlgoBase):
             if action == 0:
                 continue
             elif action == 1:
-                ping_loc_recommendations = KerasCPPModel("./ping ./fdeep_ping.json").predict(state)
+                ping_loc_recommendations = KerasCPPModel("./fdeep_ping.json").predict(state)
                 eprint("HEREE:::  ", ping_loc_recommendations)
                 ping_loc = random.randint(0,27)
                 self.spawn_ping(ping_loc)
