@@ -28,6 +28,7 @@ int main() //int argc, char** argv
 
         const auto result = model.predict({input_data});
         std::cerr << "output: " << fdeep::show_tensor5s(result) << std::endl;
+        input_string = "";
     }
     
 
