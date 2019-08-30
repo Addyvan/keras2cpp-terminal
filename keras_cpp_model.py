@@ -1,6 +1,6 @@
 from __future__ import print_function
 import sys
-from subprocess import TimeoutExpired, Popen, PIPE
+from subprocess import Popen, PIPE
 
 
 def is_number(s):
@@ -35,7 +35,7 @@ class KerasCPPModel:
         try:
             self.proc.stdin.write(str(i).encode('utf-8'))
             outs, errs = self.proc.communicate()
-        except TimeoutExpired:
+        except:
             print("TIMEOUT")
             outs, errs = proc.communicate()
         return parse_results(errs)
