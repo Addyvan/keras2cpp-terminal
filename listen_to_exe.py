@@ -36,7 +36,7 @@ def _read_output(proc):
 
     return ( out, err )
 
-process_command = "./main"
+process_command = "./ping 1"
 proc = Popen(process_command, shell=True, stdout=PIPE, stderr=sys.stderr, stdin=PIPE)
 
 try:
