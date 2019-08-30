@@ -49,11 +49,11 @@ class KerasCPPModel:
         self.proc.stdin.write(state_string.encode('utf-8'))
         self.proc.stdin.flush()
 
-        test = self.proc.stderr.read_line()
+        #test = self.proc.stderr.read_line()
 
-        print(test)
+        #print(test)
         
-        #outs, errs = self.proc.communicate()
+        outs, errs = self.proc.communicate()
             
 
         return self.parse_results(errs.decode('utf-8').encode('utf-8'))
