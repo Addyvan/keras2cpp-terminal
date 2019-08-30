@@ -55,8 +55,8 @@ proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=
 
 for i in range(5):
     outs, errs = proc.communicate(input=str(i))
-    print(outs)
-    print(errs)
+    print("python outs: ", outs)
+    print("python errs: ", errs)
     time.sleep(2)
 
 
