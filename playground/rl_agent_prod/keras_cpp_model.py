@@ -53,7 +53,7 @@ class KerasCPPModel:
         #    output = self.proc.stderr.readline()
         #    print("HERE  ", output)
 
-        #outs, errs = self.proc.communicate()
+        outs, errs = self.proc.communicate()
             
 
         #return self.parse_results(errs.decode('utf-8').encode('utf-8'))
