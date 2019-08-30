@@ -23,6 +23,7 @@ class KerasCPPModel:
         while True:
             line = self.proc.stderr.readline().decode("utf-8")
             if line.find("Waiting for line") != - 1:
+                print("yep")
                 break
             
         #eprint("model initialized to python")
@@ -66,7 +67,7 @@ if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
     print("model loaded")
-    state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
-    print("making prediction")
-    predictions = model.predict(state)
-    print("predictions: ", predictions)
+    #state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
+    #print("making prediction")
+    #predictions = model.predict(state)
+    #print("predictions: ", predictions)
