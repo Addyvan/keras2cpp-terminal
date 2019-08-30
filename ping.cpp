@@ -12,7 +12,7 @@ int main() //int argc, char** argv
     std::string input_string;
     std::getline (std::cin, input_string);
 
-    char string_num = input_string[0];
+    float string_num = std::stod(input_string.substr(0,1));
 
     fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
 
