@@ -6,7 +6,8 @@
 
 class KerasModel {
     
-    //fdeep::model model;
+    private:
+        std::string model_path;
     public:
 
         void init(const std::string& model_path) {
@@ -20,7 +21,12 @@ class KerasModel {
     
 };
 
+KerasModel::KerasModel (std::string& model_path) {
+    std::cout << model_path << std::endl;
+    this->model_path = model_path;
+}
+
 extern "C" {
-    KerasModel* KerasModel_new(){ return new KerasModel(); }
+    KerasModel* KerasModel_new(const std::string& model_path){ return new KerasModel(model_path); }
     void KerasModel_init(KerasModel* kerasmodel, const std::string& model_path){ kerasmodel->init(model_path); }
 }
