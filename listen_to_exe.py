@@ -36,6 +36,20 @@ except:
 """
 
 
+def order_predictions(predictions):
+    sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
+
+    return sorted_preds
+
+
+def parse_results(data):
+    data = data.decode('utf-8')
+    data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
+
+    predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
+    ordered_predictions = order_predictions(predictions)
+    return ordered_predictions
+
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
 for i in range(5):
