@@ -47,7 +47,7 @@ class KerasCPPModel:
         print("THERE")
         while True:
             print("HER2")
-            line = self.proc.stderr.readline()
+            line = self.proc.stderr.read()
             print("ICIT", line)
             if line.find("output") != - 1:
                 break
