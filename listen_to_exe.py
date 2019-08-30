@@ -23,6 +23,8 @@ def _read_output(proc):
         if out_line[0:6] == "outline":
             data = out_line[8:]
             predictions = parse_results(data)
+        else:
+            print("NOPE: ", out_line)
 
     print("predictions: ", predictions)
 
