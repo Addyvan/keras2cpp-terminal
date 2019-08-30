@@ -42,7 +42,7 @@ def is_number(s):
         return False
 
 def order_predictions(predictions):
-    sorted_preds = [(i[0], i[1]) for i in sorted(enumerate(predictions), key=lambda x:x[1], reversed=True)]
+    sorted_preds = [(i[0], i[1]) for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
 
     return sorted_preds
 
