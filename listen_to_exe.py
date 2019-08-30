@@ -49,7 +49,7 @@ except:
     outs, errs = proc.communicate()
 """
 
-process_command = "./ping 1"
+process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
 grep_stdout = p.communicate(input=b'1')[0]
 print("python: ",  grep_stdout.decode())
