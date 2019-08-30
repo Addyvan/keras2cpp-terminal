@@ -9,7 +9,7 @@ class KerasModel {
     //fdeep::model model;
     public:
 
-        void init(std::string model_path) {
+        void init(const std::string& model_path) {
             auto model = fdeep::load_model(model_path);
         }
 
@@ -20,5 +20,5 @@ class KerasModel {
 
 extern "C" {
     KerasModel* KerasModel_new(){ return new KerasModel(); }
-    void KerasModel_init(KerasModel* kerasmodel, std::string model_path){ kerasmodel->init(model_path); }
+    void KerasModel_init(KerasModel* kerasmodel, std::string& model_path){ kerasmodel->init(model_path); }
 }
