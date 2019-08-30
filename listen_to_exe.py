@@ -21,15 +21,14 @@ def _read_output(proc):
     while proc.poll() == None:
         out_line = proc.stdout.readline().decode('utf-8').encode('utf-8')
         #print("len: ", len(out_line), out_line[0:6])
-        if len(out_line) >= 6:
+        if len(out_line) >= 0:
             if out_line.find("output") != - 1:
                 data = out_line[8:]
                 predictions = parse_results(data)
                 print("predictions: ", predictions)
             else:
                 print("NOPE: ", out_line)
-
-
+            out.append(out_line)
 
     return ( out, err )
 
