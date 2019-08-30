@@ -10,6 +10,8 @@ import random
 from algolib.algo_base import AlgoBase
 from algolib.util import eprint
 
+from keras_cpp_model import KerasCPPModel
+
 class RLProdBot(AlgoBase):
 
     def __init__(self):
@@ -69,7 +71,8 @@ class RLProdBot(AlgoBase):
             if action == 0:
                 continue
             elif action == 1:
-                #ping_loc = np.argmax(self.ping_model.predict(self.state.reshape((1, 420,6)))[0])
+                ping_loc_recommendations = KerasCPPModel("./ping ./fdeep_ping.json").predict(state)
+                eprint("HEREE:::  ", ping_loc_recommendations)
                 ping_loc = random.randint(0,27)
                 self.spawn_ping(ping_loc)
                 continue
