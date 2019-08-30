@@ -55,6 +55,7 @@ if __name__ == "__main__":
     model = KerasCPPModel()
     print("model loaded")
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
+    print("making prediction")
     predictions = model.predict(state)
     print("predictions: ", predictions)
     time.sleep(5)
