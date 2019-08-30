@@ -40,6 +40,5 @@ try:
     while proc.returncode == None:
         outs , errs = _read_output(proc)
 except:
-    print("TimeoutExpired: \n")
     outs, errs = proc.communicate()
     print("OUTS: ", outs, "ERRS: ", errs)
