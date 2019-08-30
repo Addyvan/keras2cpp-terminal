@@ -20,7 +20,7 @@ def _read_output(proc):
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
         out_line = proc.stdout.readline().decode('utf-8')
-        if out_line[0:7] == "outline":
+        if out_line[0:6] == "outline":
             data = out_line[8:]
             predictions = parse_results(data)
 
