@@ -42,7 +42,7 @@ def is_number(s):
         return False
 
 def order_predictions(predictions):
-    sorted_preds = [(i[0], i[1]) for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
+    sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
 
     return sorted_preds
 
@@ -53,12 +53,10 @@ def parse_results(data):
 
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
     ordered_predictions = order_predictions(predictions)
-    print(ordered_predictions)
     return ordered_predictions
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-time.sleep(1)
 for i in range(5):
     try:
         proc.stdin.write(str(i).encode('utf-8'))
