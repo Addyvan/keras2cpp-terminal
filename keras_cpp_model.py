@@ -39,7 +39,7 @@ class KerasCPPModel:
         except:
             print("TIMEOUT")
             outs, errs = proc.communicate()
-        return parse_results(errs)
+        return self.parse_results(errs)
 
 
 if __name__ == "__main__":
