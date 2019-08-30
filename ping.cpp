@@ -15,6 +15,7 @@ int main(int argc, char** argv)
         std::cerr<< "Waiting for line" << std::endl;
         std::getline (std::cin, input_string);
 
+        std::cout << "RECEIVED SOMETHING!!" << std::endl;
         if (input_string != "END_GAME") {
             float string_num = std::stod(input_string.substr(0,1));
 
