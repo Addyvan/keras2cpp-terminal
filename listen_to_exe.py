@@ -25,11 +25,9 @@ def _read_output(proc):
     return_code = proc.poll()
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
-        out_line = proc.stdout.readline().decode('utf-8').encode('utf-8')
-        #print("len: ", len(out_line), out_line[0:6])
+        out_line = proc.stderr.readline().decode('utf-8').encode('utf-8')
         if len(out_line) >= 0:
             if out_line.find("output") != - 1:
-                print("HERE MOTHERFUCKER")
                 data = out_line[8:]
                 predictions = parse_results(data)
                 print("predictions: ", predictions)
