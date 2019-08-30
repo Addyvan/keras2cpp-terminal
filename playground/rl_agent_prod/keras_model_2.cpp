@@ -6,7 +6,7 @@
 
 class KerasModel {
     
-    auto model;
+    fdeep:: model;
     public:
 
         void init(std::string model_path) {
