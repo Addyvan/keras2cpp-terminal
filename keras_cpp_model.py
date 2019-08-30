@@ -42,7 +42,9 @@ class KerasCPPModel:
                 state_string += str(val) + ","
         state[: -1] # remove trailing comma
 
+        print("HERE")
         self.proc.stdin.write(state_string.encode('utf-8'))
+        print("THERE")
         while True:
             line = self.proc.stderr.readline()
             print("ICIT", line)

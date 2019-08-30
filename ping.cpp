@@ -14,6 +14,7 @@ int main(int argc, char** argv)
     while (game) {
         std::cout << "Waiting to receive state" << std::endl;
         std::cerr<< "Waiting for line" << std::endl;
+        
         std::getline (std::cin, input_string);
 
         std::cout << "Received state!" << std::endl;
