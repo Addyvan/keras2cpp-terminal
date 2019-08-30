@@ -51,5 +51,5 @@ except:
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
-grep_stdout = proc.communicate(input=b'1')[0]
-print("python: ",  grep_stdout.decode())
+outs, errs = proc.communicate(input=b'1')[0]
+print("python: ",  errs.decode())
