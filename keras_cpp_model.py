@@ -39,12 +39,10 @@ class KerasCPPModel:
         state[: -1] # remove trailing comma
 
         try:
-            self.proc.stdin.write(state_string.encode('utf-8'))
-            errs = self.proc.stderr
+            while proc.poll() == None:
+                out_line = proc.stderr.readline().decode('utf-8').encode('utf-8')
         except:
-            print("TIMEOUT")
-            outs, errs = self.proc.communicate()
-            print("ICIT: ", errs)
+            print("ERROR")
         return self.parse_results(errs)
 
     def shut_off(self):
