@@ -9,9 +9,9 @@ int main(int argc, char** argv)
     //std::cout<< "You have entered " << argv[1] << " for all values" << std::endl ;
     const auto model = fdeep::load_model(argv[1]);
 
-    bool gameDone = false;
+    bool game = true;
     std::string input_string;
-    while (!gameDone) {
+    while (game) {
         std::cout<< "Waiting for line " << std::endl;
         std::getline (std::cin, input_string);
 
