@@ -43,8 +43,8 @@ def is_number(s):
 
 def parse_results(data):
     data = data.decode('utf-8')
-    data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
-    print(data)
+    data = data.split("\n")[0]
+    print(data.split(","))
     #predictions = [pred for pred in data]
     #print(predictions)
     #print(predictions.sort())
