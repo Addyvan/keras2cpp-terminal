@@ -60,7 +60,7 @@ class KerasCPPModel:
 
 if __name__ == "__main__":
     print("loading model")
-    model = KerasCPPModel()
+    model = KerasCPPModel("./rl_agent_prod/fdeep_ping.json")
     print("model loaded")
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     print("making prediction")
