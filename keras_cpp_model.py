@@ -45,6 +45,7 @@ class KerasCPPModel:
         self.proc.stdin.write(state_string.encode('utf-8'))
         while True:
             line = self.proc.stderr.readline()
+            print(line)
             if line.find("output") != - 1:
                 break
 
