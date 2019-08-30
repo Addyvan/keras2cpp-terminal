@@ -48,8 +48,12 @@ class KerasCPPModel:
 
         self.proc.stdin.write(state.encode('utf-8'))
         self.proc.stdin.flush()
+
+        test = self.proc.stderr.read_line()
+
+        print(test)
         
-        outs, errs = self.proc.communicate()
+        #outs, errs = self.proc.communicate()
             
 
         return self.parse_results(errs.decode('utf-8').encode('utf-8'))
@@ -64,9 +68,5 @@ if __name__ == "__main__":
     print("model loaded")
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     print("making prediction")
-    predictions = model.predict(state)
-    print("predictions: ", predictions)
-    model = KerasCPPModel()
-    state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
