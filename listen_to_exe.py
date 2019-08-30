@@ -42,7 +42,7 @@ def is_number(s):
         return False
 
 def parse_results(data):
-    
+    data = str(data)
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
     for e in data:
         print(type(str(e)))
