@@ -20,7 +20,7 @@ class KerasCPPModel:
         while True:
             line = self.proc.stderr.readline()
             print("HERE ", line)
-            if line == "Waiting for line":
+            if line.find("Waiting for line") != - 1:
                 break
         print("model initialized to python")
 
