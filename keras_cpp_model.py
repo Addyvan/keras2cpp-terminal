@@ -2,6 +2,7 @@ from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
 import random
+import time
 
 def is_number(s):
     try:
@@ -58,6 +59,7 @@ if __name__ == "__main__":
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
+    time.sleep(5)
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
