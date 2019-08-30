@@ -12,10 +12,11 @@ int main(int argc, char** argv)
     bool game = true;
     std::string input_string;
     while (game) {
+        std::cout << "Waiting to receive state" << std::endl;
         std::cerr<< "Waiting for line" << std::endl;
         std::getline (std::cin, input_string);
 
-        std::cout << "RECEIVED SOMETHING!!" << std::endl;
+        std::cout << "Received state!" << std::endl;
         if (input_string != "END_GAME") {
             float string_num = std::stod(input_string.substr(0,1));
 
