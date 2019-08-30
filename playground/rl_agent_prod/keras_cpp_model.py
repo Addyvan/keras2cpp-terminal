@@ -47,7 +47,7 @@ class KerasCPPModel:
         state[: -1] # remove trailing comma
         state += "\n"
         write = self.proc.stdin.write(str(state_string).encode('utf-8'))
-        self.proc.stdin.flush()
+        #self.proc.stdin.flush()
         
         #while self.proc.poll() is None:
         #    output = self.proc.stderr.readline()
