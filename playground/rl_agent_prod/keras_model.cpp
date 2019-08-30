@@ -9,12 +9,11 @@ int main(int argc, char** argv)
 {
     //std::cout<< "You have entered " << argv[1] << std::endl ;
     const auto model = fdeep::load_model(argv[1]);
-
+    std::cerr<< "Waiting for line" << std::endl;
     bool game = true;
     std::string input_string;
     while (game) {
-        //std::cout << "Waiting to receive state" << std::endl;
-        std::cerr<< "Waiting for line" << std::endl;
+        std::cout << "Waiting to receive state" << std::endl;
 
         std::getline (std::cin, input_string);
 
