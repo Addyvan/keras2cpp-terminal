@@ -9,9 +9,9 @@ int main() //int argc, char** argv
     //std::cout<< "You have entered " << argv[1] << " for all values" << std::endl ;
     const auto model = fdeep::load_model("./fdeep_ping.json");
 
-    string input_string;
+    std::string input_string;
     std::getline (std::cin, input_string);
-    
+
     fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
 
     for (int i = 0; i < 420; i++) {
