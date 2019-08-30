@@ -19,9 +19,10 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
-            print(line)
+            print("HERE ", line)
             if line == "Waiting for line":
                 break
+        print("model initialized to python")
 
     def order_predictions(self, predictions):
         sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
