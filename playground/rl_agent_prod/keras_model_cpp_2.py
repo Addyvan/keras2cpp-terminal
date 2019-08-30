@@ -5,9 +5,11 @@ class Foo(object):
     def __init__(self):
         self.obj = lib.KerasModel_new()
 
-    def bar(self):
-        lib.KerasModel_bar(self.obj)
+    def init(self):
+        lib.KerasModel_init(self.obj)
 
 if __name__ == "__main__":
     foo = Foo()
-    foo.bar()
+    model = foo.init("./fdeep_ping.json")
+
+    print(model)
