@@ -13,7 +13,8 @@ int main()
           input_data[i][j] = 3;
       }
   }
-  fdeep::tensor5 input_tensor = fdeep::tensor5(fdeep::shape5(1,1,1,420,6), input_data);
+  const fdeep::shared_int_vec sv(fplus::make_shared_ref<fdeep::int_vec>(std::move(input_data)));
+  //fdeep::tensor5 input_tensor = fdeep::tensor5(fdeep::shape5(1,1,1,420,6), input_data);
   //const auto result = model.predict({fdeep::tensor5(fdeep::shape5(1, 1, 1, 1, 4), {1, 2, 3, 4})});
   //std::cout << fdeep::show_tensor5s(result) << std::endl;
   return 0;
