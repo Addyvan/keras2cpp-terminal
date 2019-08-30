@@ -22,6 +22,7 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
+            eprint(line)
             if line.find("Waiting for line") != - 1:
                 break
             
