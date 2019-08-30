@@ -39,7 +39,7 @@ class KerasCPPModel:
         state[: -1] # remove trailing comma
 
         try:
-            while proc.poll() == None:
+            while self.proc.poll() == None:
                 errs = proc.stderr.readline().decode('utf-8').encode('utf-8')
                 print(errs)
         except:
