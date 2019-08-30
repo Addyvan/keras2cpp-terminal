@@ -1,6 +1,6 @@
 from __future__ import print_function
 import sys
-from subprocess import Popen, PIPE
+from subprocess import Popen
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -40,7 +40,7 @@ def _read_output(proc):
     return ( out, err )
 
 process_command = "./ping 1"
-proc = Popen(process_command, shell=True, stdout=PIPE, stderr=sys.stderr, stdin=PIPE)
+proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr)
 
 try:
     while proc.returncode == None:
