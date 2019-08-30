@@ -38,12 +38,9 @@ class KerasCPPModel:
                 state_string += str(val) + ","
         state[: -1] # remove trailing comma
 
-        try:
-            while self.proc.poll() == None:
-                errs = proc.stderr.readline().decode('utf-8').encode('utf-8')
-                print(errs)
-        except:
-            print("ERROR")
+        while self.proc.poll() == None:
+            errs = proc.stderr.readline().decode('utf-8').encode('utf-8')
+            print(errs)
         return self.parse_results(errs)
 
     def shut_off(self):
