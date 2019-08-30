@@ -6,18 +6,18 @@
 
 int main(int argc, char** argv)
 {
-    std::cout<< "You have entered " << argv[1] << std::endl ;
+    //std::cout<< "You have entered " << argv[1] << std::endl ;
     const auto model = fdeep::load_model(argv[1]);
 
     bool game = true;
     std::string input_string;
     while (game) {
-        std::cout << "Waiting to receive state" << std::endl;
+        //std::cout << "Waiting to receive state" << std::endl;
         std::cerr<< "Waiting for line" << std::endl;
 
         std::getline (std::cin, input_string);
 
-        std::cout << "Received state!" << std::endl;
+        //std::cout << "Received state!" << std::endl;
         if (input_string != "END_GAME") {
             float string_num = std::stod(input_string.substr(0,1));
 
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
         
     }
 
-    std::cout << "Shutdown model, game ended" << std::endl;
+    //std::cout << "Shutdown model, game ended" << std::endl;
     
 
     return 0;
