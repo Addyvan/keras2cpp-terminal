@@ -56,7 +56,7 @@ proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=
 time.sleep(1)
 for i in range(5):
     try:
-        proc.stdin.write(str(i))
+        proc.stdin.write(b'{}'.format(str(i)))
         outs, errs = proc.communicate()
     except TimeoutExpired:
         #proc.kill()
