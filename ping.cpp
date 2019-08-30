@@ -4,7 +4,7 @@
 #include <fdeep/fdeep.hpp>
 #include <stdlib.h>
 
-int main(char** argv)
+int main(int argc, char** argv)
 {
     std::cout<< "You have entered " << argv[0] << " for all values" << std::endl ;
 
