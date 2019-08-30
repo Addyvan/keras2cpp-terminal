@@ -26,7 +26,7 @@ def _read_output(proc):
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
         out_line = proc.stderr.readline().decode('utf-8').encode('utf-8')
-        print(out_line)
+        print("SUH -- ", out_line)
         """
         if len(out_line) >= 0:
             if out_line.find("output") != - 1:
