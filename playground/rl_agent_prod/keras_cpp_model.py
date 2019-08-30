@@ -48,7 +48,7 @@ class KerasCPPModel:
         self.proc.stdin.write(str(0).encode('utf-8'))
         self.proc.stdin.flush()
         
-        print(self.proc.stdout.readline())
+        print("HERE  ", self.proc.stdout.readline())
         #outs, errs = self.proc.communicate()
             
 
