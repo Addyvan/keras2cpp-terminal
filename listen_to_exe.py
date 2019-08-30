@@ -43,7 +43,7 @@ def is_number(s):
 
 def parse_results(data):
     
-    data = data.replace("[", "").replace("]", "")
+    data = data.replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
     print(data.split(","))
     return predictions
 
