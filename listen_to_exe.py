@@ -13,6 +13,7 @@ def is_number(s):
         return False
 
 def parse_results(arr, data):
+    print("parsing predictions   --- ", data)
     predictions = []
     for char in data:
         if is_number(char):
