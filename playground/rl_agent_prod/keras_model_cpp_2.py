@@ -9,7 +9,7 @@ class Foo(object):
         lib.KerasModel_init(self.obj, model_path)
 
 if __name__ == "__main__":
-    foo = Foo()
-    foo.init("./fdeep_ping.json")
+    foo = Foo("suh")
+    #foo.init("./fdeep_ping.json")
 
     #print(model)
