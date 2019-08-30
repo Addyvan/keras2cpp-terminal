@@ -46,11 +46,17 @@ class KerasCPPModel:
             outs, errs = proc.communicate()
         return self.parse_results(errs)
 
+    def shut_off(self):
+        self.proc.stdin.write("END_GAME".encode('utf-8'))
+
 
 if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
     print("model loaded")
+    state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
+    predictions = model.predict(state)
+    print("predictions: ", predictions)
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
