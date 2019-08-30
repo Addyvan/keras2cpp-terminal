@@ -10,6 +10,6 @@ class Foo(object):
 
 if __name__ == "__main__":
     foo = Foo()
-    model = foo.init("./fdeep_ping.json")
+    #model = foo.init("./fdeep_ping.json")
 
-    print(model)
+    #print(model)
