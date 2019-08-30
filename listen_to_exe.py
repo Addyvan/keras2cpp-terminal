@@ -42,11 +42,11 @@ def is_number(s):
         return False
 
 def parse_results(data):
-    data = str(data)
+    data = data.decode('utf-8')
     print(data)
-    #data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
+    data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "").replace(" ", "")
 
-    #predictions = [pred for pred in data]
+    predictions = [pred for pred in data]
     #print(predictions)
     #print(predictions.sort())
     #return predictions
