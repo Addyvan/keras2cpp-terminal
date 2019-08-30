@@ -16,7 +16,7 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
             print("HERE ", line)

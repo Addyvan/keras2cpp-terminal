@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     bool game = true;
     std::string input_string;
     while (game) {
-        std::cout<< "Waiting for line " << std::endl;
+        std::cerr<< "Waiting for line " << std::endl;
         std::getline (std::cin, input_string);
 
         if (input_string != "END_GAME") {
