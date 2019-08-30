@@ -25,10 +25,10 @@ def _read_output(proc):
             if out_line.find("output") != - 1:
                 data = out_line[8:]
                 predictions = parse_results(data)
+                print("predictions: ", predictions)
             else:
                 print("NOPE: ", out_line)
 
-    print("predictions: ", predictions)
 
 
     return ( out, err )
