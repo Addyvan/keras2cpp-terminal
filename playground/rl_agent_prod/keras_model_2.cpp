@@ -6,10 +6,14 @@
 
 class KerasModel {
     
+    auto model;
     public:
+
         void init(string model_path) {
-            const auto model = fdeep::load_model(argv[1]);
+            model = fdeep::load_model(argv[1]);
         }
+
+        
     
     
 };
