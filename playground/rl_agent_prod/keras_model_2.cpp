@@ -10,6 +10,8 @@ class KerasModel {
     public:
 
         void init(const std::string& model_path) {
+            std::cout << "runs here " << std::endl;
+            std::cout << model_path << std::endl;
             auto model = fdeep::load_model(model_path);
         }
 
