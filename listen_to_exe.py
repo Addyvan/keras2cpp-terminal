@@ -44,10 +44,9 @@ def is_number(s):
 def parse_results(data):
     data = data.decode('utf-8')
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
-    print(data.split(","))
-    #.replace(" ", "")
-    #predictions = [pred for pred in data]
-    #print(predictions)
+
+    predictions = [pred.replace(" ", "") for pred in data.split(",")]
+    print(predictions)
     #print(predictions.sort())
     #return predictions
 
