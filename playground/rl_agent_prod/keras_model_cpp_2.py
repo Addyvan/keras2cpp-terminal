@@ -8,6 +8,9 @@ class Foo(object):
     def init(self, model_path):
         lib.KerasModel_init(self.obj, model_path)
 
+    def predict(self, state):
+        print(self.obj.model_path)
+
 if __name__ == "__main__":
     foo = Foo("suh")
     #foo.init("./fdeep_ping.json")
