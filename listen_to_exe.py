@@ -51,9 +51,13 @@ except:
 """
 
 process_command = "./ping"
-proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
+proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+
 for i in range(5):
     outs, errs = proc.communicate(input=str(i))
+    while proc.poll() == None:
+        out_line = proc.stdout.readline().decode('utf-8')
+        print("from python", out_line)
     time.sleep(2)
 
 
