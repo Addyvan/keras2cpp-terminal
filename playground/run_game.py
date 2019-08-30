@@ -25,4 +25,6 @@ def run_game():
         )
     p.daemon = 1
     p.wait()
-    #listen_to_game(proc)
+    
+if __name__ == "__main__":
+    run_game()
