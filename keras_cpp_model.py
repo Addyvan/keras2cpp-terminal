@@ -1,7 +1,7 @@
 from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
-
+import random
 
 def is_number(s):
     try:
@@ -31,7 +31,7 @@ class KerasCPPModel:
         ordered_predictions = self.order_predictions(predictions)
         return ordered_predictions
 
-    def predict(self, i):
+    def predict(self, state):
         print("predicting")
         try:
             self.proc.stdin.write(str(i).encode('utf-8'))
@@ -46,5 +46,6 @@ if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
     print("model loaded")
-    predictions = model.predict(3)
+    state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
+    predictions = model.predict(state)
     print("predictions: ", predictions)
