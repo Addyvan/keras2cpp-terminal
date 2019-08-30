@@ -3,6 +3,9 @@ import sys
 from subprocess import Popen, PIPE
 import random
 
+def eprint(*args, **kwargs):
+  print(*args, file=sys.stderr, **kwargs)
+
 def is_number(s):
     try:
         float(s)
@@ -19,6 +22,7 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
+            eprint()
             if line.find("Waiting for line") != - 1:
                 self.proc.stdin.flush()
                 break
