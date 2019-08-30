@@ -1,6 +1,6 @@
 from __future__ import print_function
 import sys
-from subprocess import Popen, PIPE
+from subprocess import TimeoutExpired, Popen, PIPE
 import time
 """
 def eprint(*args, **kwargs):
@@ -55,8 +55,12 @@ process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
 
 for i in range(5):
-    outs, errs = proc.communicate(input=str(i))
-    print("python outs: ", outs)
+    try:
+        proc.stdin.write("hello\nhello world\nhella")
+        outs, errs = proc.communicate()
+    except TimeoutExpired:
+        #proc.kill()
+        outs, errs = proc.communicate()
     parse_results(errs)
     time.sleep(2)
 
