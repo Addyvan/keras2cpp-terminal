@@ -1,7 +1,7 @@
 import sys
 from subprocess import Popen, PIPE,TimeoutExpired
 
-def _read_output(self, proc):
+def _read_output(proc):
     return_code = proc.poll()
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
