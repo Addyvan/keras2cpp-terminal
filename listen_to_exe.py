@@ -53,10 +53,10 @@ def parse_results(data):
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-
+time.sleep(1)
 for i in range(5):
     try:
-        proc.stdin.write("hello\nhello world\nhella")
+        proc.stdin.write(str(i))
         outs, errs = proc.communicate()
     except TimeoutExpired:
         #proc.kill()
