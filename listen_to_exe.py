@@ -6,21 +6,6 @@ import time
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
-
-def parse_results(arr, data):
-    print("parsing predictions   --- ", data)
-    predictions = []
-    for char in data:
-        if is_number(char):
-            predictions.append(int(char))
-    print(predictions)
-    return predictions
 
 def _read_output(proc):
     return_code = proc.poll()
@@ -49,6 +34,21 @@ try:
 except:
     outs, errs = proc.communicate()
 """
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def parse_results(data):
+    print("parsing predictions   --- ", data)
+    predictions = []
+    for char in data:
+        if is_number(char):
+            predictions.append(int(char))
+    print(predictions)
+    return predictions
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
@@ -56,7 +56,7 @@ proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=
 for i in range(5):
     outs, errs = proc.communicate(input=str(i))
     print("python outs: ", outs)
-    print("python errs: ", errs)
+    parse_results(errs)
     time.sleep(2)
 
 
