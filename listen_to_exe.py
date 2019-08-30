@@ -19,12 +19,13 @@ def _read_output(proc):
     return_code = proc.poll()
     out, err = out_line, err_line = "",""
     while proc.poll() == None:
-        out_line = proc.stdout.readline().decode('utf-8')
-        if out_line[0:6] == "outline":
-            data = out_line[8:]
-            predictions = parse_results(data)
-        else:
-            print("NOPE: ", out_line)
+        out_line = str(proc.stdout.readline().decode('utf-8'))
+        if len(out_line) >= 6:
+            if out_line[0:6] == "outline":
+                data = out_line[8:]
+                predictions = parse_results(data)
+            else:
+                print("NOPE: ", out_line)
 
     print("predictions: ", predictions)
 
