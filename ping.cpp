@@ -4,9 +4,9 @@
 #include <fdeep/fdeep.hpp>
 #include <stdlib.h>
 
-int main(int argc, char** argv)
+int main(char** argv)
 {
-    std::cout<< "You have entered " << argc << "arguments" << std::endl ;
+    std::cout<< "You have entered " << argv[0] << " for all values" << std::endl ;
 
     const auto model = fdeep::load_model("./fdeep_ping.json");
 
