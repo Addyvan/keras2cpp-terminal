@@ -18,7 +18,7 @@ int main() //int argc, char** argv
 
     for (int i = 0; i < 420; i++) {
         for (int j = 0; j < 6; j++) {
-            input_data.set(0, 0, 0, i, j, atof(string_num));
+            input_data.set(0, 0, 0, i, j, string_num);
         }
     }
 
