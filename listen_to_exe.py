@@ -49,7 +49,7 @@ def parse_results(data):
     #predictions = [float(pred) for pred in data]
     #print(predictions)
     #print(predictions.sort())
-    return predictions
+    #return predictions
 
 process_command = "./ping"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
