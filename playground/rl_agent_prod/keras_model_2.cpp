@@ -5,14 +5,16 @@
 #include <stdlib.h>
 
 class KerasModel {
-    //auto model = fdeep::load_model(argv[1]);
+    
     public:
-        void bar() {
-            std::cout << "Hello" << std::endl;
+        void init(string model_path) {
+            const auto model = fdeep::load_model(argv[1]);
         }
+    
+    
 };
 
 extern "C" {
     KerasModel* KerasModel_new(){ return new KerasModel(); }
-    void KerasModel_bar(KerasModel* kerasmodel){ kerasmodel->bar(); }
+    void KerasModel_init(KerasModel* kerasmodel, string model_path){ kerasmodel->init(model_path); }
 }
