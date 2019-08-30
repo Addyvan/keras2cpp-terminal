@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE
 import random
 
 def eprint(*args, **kwargs):
-  print(*args, file=sys.stderr, **kwargs)
+    print(*args, file=sys.stderr, **kwargs)
 
 def is_number(s):
     try:
@@ -22,12 +22,12 @@ class KerasCPPModel:
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline()
-            eprint()
+            eprint(line)
             if line.find("Waiting for line") != - 1:
                 self.proc.stdin.flush()
                 break
             
-        print("model initialized to python")
+        eprint("model initialized to python")
 
     def order_predictions(self, predictions):
         sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
@@ -58,7 +58,7 @@ class KerasCPPModel:
     def shut_off(self):
         self.proc.stdin.write("END_GAME".encode('utf-8'))
 
-
+"""
 if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
@@ -71,3 +71,4 @@ if __name__ == "__main__":
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     predictions = model.predict(state)
     print("predictions: ", predictions)
+"""
