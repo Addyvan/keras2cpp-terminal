@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fdeep/fdeep.hpp>
+#include <stdlib.h>
 
 int main(int argc, char** argv)
 {
@@ -13,7 +14,7 @@ int main(int argc, char** argv)
 
     for (int i = 0; i < 420; i++) {
         for (int j = 0; j < 6; j++) {
-            input_data.set(0, 0, 0, i, j, (float) argv[0]);
+            input_data.set(0, 0, 0, i, j, atof(argv[0]));
         }
     }
 
