@@ -43,7 +43,7 @@ class KerasCPPModel:
             outs, errs = self.proc.communicate()
         except:
             print("TIMEOUT")
-            outs, errs = proc.communicate()
+            outs, errs = self.proc.communicate()
         return self.parse_results(errs)
 
     def shut_off(self):
