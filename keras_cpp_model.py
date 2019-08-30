@@ -11,7 +11,7 @@ def is_number(s):
         return False
 
 class KerasCPPModel:
-    def __init__(self, process_command="./ping"):
+    def __init__(self, process_command="./ping ./fdeep_ping.json"):
         self.process_command = process_command
         self._run_cpp_instance()
 
@@ -32,9 +32,14 @@ class KerasCPPModel:
         return ordered_predictions
 
     def predict(self, state):
-        print("predicting")
+        state_string = ""
+        for row in state:
+            for val in row:
+                state_string += str(val) + ","
+        state[: -1] # remove trailing comma
+
         try:
-            self.proc.stdin.write(str(i).encode('utf-8'))
+            self.proc.stdin.write(state_string.encode('utf-8'))
             outs, errs = self.proc.communicate()
         except:
             print("TIMEOUT")

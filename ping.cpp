@@ -4,10 +4,10 @@
 #include <fdeep/fdeep.hpp>
 #include <stdlib.h>
 
-int main() //int argc, char** argv
+int main(int argc, char** argv)
 {
     //std::cout<< "You have entered " << argv[1] << " for all values" << std::endl ;
-    const auto model = fdeep::load_model("./fdeep_ping.json");
+    const auto model = fdeep::load_model(argv[1]);
 
     bool gameDone = false;
     std::string input_string;
