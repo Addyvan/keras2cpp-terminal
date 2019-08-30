@@ -1,3 +1,4 @@
+import sys
 from subprocess import Popen, PIPE,TimeoutExpired
 
 def _read_output(self, proc):
