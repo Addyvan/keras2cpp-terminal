@@ -158,9 +158,8 @@ class RLProdBot(AlgoBase):
         """
         Fixes state to include spawns 
         """
-        #new_state = np.copy(state)
-        new_state[action][state_i] += 1
-        return new_state
+        state[action][state_i] += 1
+        return state
 
     def spawn_ping(self, action):
         action_loc = map_offensive_action_int_to_game_loc(action)
