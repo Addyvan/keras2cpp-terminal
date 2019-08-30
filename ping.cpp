@@ -12,10 +12,9 @@ int main(int argc, char** argv)
     bool gameDone = false;
     std::string input_string;
     while (!gameDone) {
-        
+        std::cout<< "Waiting for line " << std::endl;
         std::getline (std::cin, input_string);
 
-        //std::cout<< "HERE: " << input_string << std::endl;
         float string_num = std::stod(input_string.substr(0,1));
 
         fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
