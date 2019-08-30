@@ -43,20 +43,13 @@ class KerasCPPModel:
             for val in row:
                 state_string += str(val) + ","
         state[: -1] # remove trailing comma
-
-        print("HERE")
         self.proc.stdin.write(str(0).encode('utf-8'))
         self.proc.stdin.flush()
-        print("THERE")
-        while True:
-            print("HER2")
-            line = "output"
-            line = self.proc.stderr.readlines()
-            print("ICIT", line)
-            if line.find("output") != - 1:
-                break
+        
+        outs, errs = self.proc.communicate()
+            
 
-        return self.parse_results(line.decode('utf-8').encode('utf-8'))
+        return self.parse_results(errs.decode('utf-8').encode('utf-8'))
 
     def shut_off(self):
         self.proc.stdin.write("END_GAME".encode('utf-8'))
