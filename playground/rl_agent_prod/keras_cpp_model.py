@@ -22,18 +22,6 @@ class KerasCPPModel:
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         time.sleep(1)
-        """
-        while not self.proc.poll():
-            print("icit")
-            line = self.proc.stderr.readline()s.decode("utf-8")
-            print("laba")
-            if len(line) > 0:
-                print("LINE: ", line)
-            if line.find("Waiting for line") != - 1:
-                break
-            time.sleep(1)
-            print("trying")
-        """
         print("model initialized to python")
 
     def order_predictions(self, predictions):
@@ -44,9 +32,10 @@ class KerasCPPModel:
     def parse_results(self, data):
         data = data.decode('utf-8')
         data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
-        predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-        ordered_predictions = self.order_predictions(predictions)
-        return ordered_predictions
+        print([pred.replace(" ", "") for pred in data.split(",")])
+        #predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
+        #ordered_predictions = self.order_predictions(predictions)
+        #return ordered_predictions
 
     def predict(self, state):
         state_string = ""
@@ -56,20 +45,14 @@ class KerasCPPModel:
         state = state[: -1] # remove trailing comma
 
         
-        self.proc.stdin.write(state_string.encode('utf-8'))
-        time.sleep(1)
-        while not self.proc.poll():
-            self.proc.stderr.readline()
-        '''
-        while self.proc.poll() is None:
-            line = self.proc.stderr.readlines()
-            print(line)
-        '''
+        try:
+            self.proc.stdin.write(str(i).encode('utf-8'))
+            outs, errs = proc.communicate()
+        except TimeoutExpired:
+            proc.kill()
+            outs, errs = self.proc.communicate()
         
 
-        #print("ICIT: ", test)
-        
-        #outs, errs = self.proc.communicate()
             
 
         return self.parse_results(errs.decode('utf-8').encode('utf-8'))
