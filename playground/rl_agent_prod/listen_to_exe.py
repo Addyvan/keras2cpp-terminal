@@ -44,7 +44,7 @@ def order_predictions(predictions):
 def parse_results(data):
     data = data.decode('utf-8')
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
-    predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
+    predictions = [pred.replace(" ", "") for pred in data.split(",")]
     print(predictions)
     #ordered_predictions = self.order_predictions(predictions)
     #return ordered_predictions
