@@ -20,7 +20,7 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         time.sleep(1)
         """
         while not self.proc.poll():
@@ -57,11 +57,13 @@ class KerasCPPModel:
 
         
         self.proc.stdin.write(state_string.encode('utf-8'))
+        """
         while self.proc.poll() is None:
             line = self.proc.stderr.read(64)
             line.strip("\b")
             print(line)
-        #test = self.proc.stderr.read_line()
+        """
+        test = self.proc.stderr.read_line()
 
         #print("ICIT: ", test)
         
