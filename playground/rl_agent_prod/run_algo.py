@@ -19,19 +19,11 @@ class RLProdBot(AlgoBase):
 
         self.state = None
         self.this_turn_spawns = []
-        #self.load_models()
+        self.load_models()
 
-    """
+
     def load_models(self):
-        self.macro_bits_model = load_model('./models/macro_bits')
-        self.macro_cores_model = load_model('./models/macro_cores')
-        self.filter_model = load_model('./models/filter')
-        self.encryptor_model = load_model('./models/encryptor')
-        self.destructor_model = load_model('./models/destructor')
-        self.ping_model = load_model('./models/ping')
-        self.emp_model = load_model('./models/emp')
-        self.scrambler_model = load_model('./models/scrambler')
-    """
+        self.ping_model = KerasCPPModel("./rl_agent_prod/fdeep_ping.json")
 
     def on_turn(self, json_state):
         """
@@ -71,7 +63,7 @@ class RLProdBot(AlgoBase):
             if action == 0:
                 continue
             elif action == 1:
-                ping_loc_recommendations = KerasCPPModel("./rl_agent_prod/fdeep_ping.json").predict(self.state)
+                ping_loc_recommendations = self.ping_model.predict(self.state)
                 eprint("HEREE:::  ", ping_loc_recommendations)
                 ping_loc = random.randint(0,27)
                 self.spawn_ping(ping_loc)

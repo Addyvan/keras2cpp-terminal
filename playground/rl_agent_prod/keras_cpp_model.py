@@ -43,7 +43,6 @@ class KerasCPPModel:
             for val in row:
                 state_string += str(val) + ","
         state = state[: -1] # remove trailing comma
-
         
         try:
             self.proc.stdin.write(str(3).encode('utf-8'))
