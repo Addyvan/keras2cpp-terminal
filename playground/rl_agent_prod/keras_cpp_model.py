@@ -46,7 +46,7 @@ class KerasCPPModel:
 
         
         try:
-            self.proc.stdin.write(str(i).encode('utf-8'))
+            self.proc.stdin.write(str(3).encode('utf-8'))
             outs, errs = proc.communicate()
         except TimeoutExpired:
             proc.kill()
