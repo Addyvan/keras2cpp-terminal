@@ -7,39 +7,35 @@
 
 int main(int argc, char** argv)
 {
-    //std::cout<< "You have entered " << argv[1] << std::endl ;
-    const auto model = fdeep::load_model(argv[1]);
+    const auto bit_macro = fdeep::load_model("./rl_agent_prod/bits_macro.json");
     bool game = true;
     std::string input_string;
-    while (game) {
-        //std::cout << "Waiting to receive state" << std::endl;
 
-        std::getline (std::cin, input_string);
-        //std::cout << "Received state: " << input_string<< std::endl;
-        if (input_string != "END_GAME") {
-            float string_num = std::stod(input_string.substr(0,1));
+    std::getline (std::cin, input_string); // get state
+    float bits = std::stod(input_string.substr(0,1));
+    float cores = std::stod(input_string.substr(1,1));
+    std::cout << "cores: " << cores << " bits: " << bits << std::endl;
 
-            fdeep::tensor5 input_data(fdeep::shape5(1, 1, 1, 420, 6), 0);
-
-            int index = 0;
-            for (int i = 0; i < 420; i++) {
-                for (int j = 0; j < 6; j++) {
-                    input_data.set(0, 0, 0, i, j, input_string[index]);
-                    index++;
-                }
-            }
-
-            const auto result = model.predict({input_data});
-            std::cerr << "output: " << fdeep::show_tensor5s(result) << "\n";
-            input_string = "";
-        } else {
-            game = false;
+    // create state input
+    int index = 0;
+    fdeep::tensor5 state(fdeep::shape5(1, 1, 1, 420, 6), 0);
+    for (int i = 0; i < 420; i++) {
+        for (int j = 0; j < 6; j++) {
+            state.set(0, 0, 0, i, j, input_string[index+2]);
+            index++;
         }
-        
     }
 
-    //std::cout << "Shutdown model, game ended" << std::endl;
+    // bits macro
+    std::vector<int> bits_sequence;
     
+    while (bits >= 1) {
+        const auto result = bit_macro.predict({input_data});
+        std::cout << fdeep::show_tensor5s(result) << std::endl;
+        bits -= 1;
+    }
+    
+    //std::cerr << "output: " << fdeep::show_tensor5s(result) << "\n";
 
     return 0;
 }

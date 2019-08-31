@@ -15,8 +15,8 @@ def is_number(s):
         return False
 
 class KerasCPPModel:
-    def __init__(self, process_command="./rl_agent_prod/fdeep_ping.json"):
-        self.process_command = "./rl_agent_prod/keras_model " + process_command
+    def __init__(self):
+        self.process_command = "./rl_agent_prod/keras_model"
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
@@ -37,8 +37,8 @@ class KerasCPPModel:
         ordered_predictions = self.order_predictions(predictions)
         return ordered_predictions
 
-    def predict(self, state):
-        state_string = ""
+    def predict(self, state, bits=5, cores=20):
+        state_string = str(bits) + "," + str(cores) + ","
         for row in state:
             for val in row:
                 state_string += str(val) + ","
