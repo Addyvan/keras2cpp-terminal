@@ -22,11 +22,11 @@ class RLProdBot(AlgoBase):
 
 
     def load_models(self):
-        self.bits_macro_model = KerasCPPModel("./nnets/fdeep_bits_macro.json")
-        self.cores_macro_model = KerasCPPModel("./nnets/fdeep_cores_macro.json")
-        self.ping_model = KerasCPPModel("./nnets/fdeep_ping.json")
-        self.emp_model = KerasCPPModel("./nnets/fdeep_emp.json")
-        self.scrambler_model = KerasCPPModel("./nnets/fdeep_scrambler.json")
+        self.bits_macro_model = KerasCPPModel("./rl_agent_prod/nnets/fdeep_bits_macro.json")
+        self.cores_macro_model = KerasCPPModel("./rl_agent_prod/nnets/fdeep_cores_macro.json")
+        self.ping_model = KerasCPPModel("./rl_agent_prod/nnets/fdeep_ping.json")
+        self.emp_model = KerasCPPModel("./rl_agent_prod/nnets/fdeep_emp.json")
+        self.scrambler_model = KerasCPPModel("./rl_agent_prod/nnets/fdeep_scrambler.json")
 
     def on_turn(self, json_state):
         """
