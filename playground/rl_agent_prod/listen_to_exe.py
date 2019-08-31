@@ -54,11 +54,11 @@ proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=
 for i in range(5):
     try:
         proc.stdin.write(str(i).encode('utf-8'))
-        #outs, errs = proc.communicate()
-        errs = proc.stderr.readlines(2)
+        outs, errs = proc.communicate()
     except TimeoutExpired:
         #proc.kill()
-        outs, errs = proc.communicate()
+        #outs, errs = proc.communicate()
+        proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
 
 
     parse_results(errs)
