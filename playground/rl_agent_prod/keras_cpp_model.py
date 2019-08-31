@@ -63,7 +63,8 @@ class KerasCPPModel:
             line.strip("\b")
             print(line)
         """
-        test = self.proc.stderr.read_line()
+        for line in self.proc.stderr.read_lines():
+            print("here: ", line)
 
         #print("ICIT: ", test)
         
