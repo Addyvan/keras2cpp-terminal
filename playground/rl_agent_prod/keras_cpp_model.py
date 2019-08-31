@@ -20,9 +20,9 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=sys.stderr, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         time.sleep(1)
-        """
+        
         while not self.proc.poll():
             print("icit")
             line = self.proc.stderr.readline().decode("utf-8")
@@ -33,8 +33,8 @@ class KerasCPPModel:
                 break
             time.sleep(1)
             print("trying")
-        """ 
-        #eprint("model initialized to python")
+        
+        print("model initialized to python")
 
     def order_predictions(self, predictions):
         sorted_preds = [i[0] for i in sorted(enumerate(predictions), key=lambda x:x[1], reverse=True)]
