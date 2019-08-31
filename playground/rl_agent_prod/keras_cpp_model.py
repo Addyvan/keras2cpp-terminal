@@ -27,7 +27,8 @@ class KerasCPPModel:
                 print("LINE: ", line)
             if line.find("Waiting for line") != - 1:
                 break
-                time.sleep(1)
+            time.sleep(1)
+            print("trying")
             
         #eprint("model initialized to python")
 
