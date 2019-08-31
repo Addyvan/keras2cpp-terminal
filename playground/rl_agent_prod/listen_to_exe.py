@@ -41,13 +41,11 @@ def order_predictions(predictions):
 
     return sorted_preds
 
-
 def parse_results(data):
     data = data.decode('utf-8')
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
-
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-    ordered_predictions = order_predictions(predictions)
+    ordered_predictions = self.order_predictions(predictions)
     return ordered_predictions
 
 process_command = "./keras_model ./fdeep_ping.json"
