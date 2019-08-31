@@ -67,7 +67,7 @@ if __name__ == "__main__":
     print("model loaded")
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     print("making prediction")
-    #predictions = model.predict(state)
+    predictions = model.predict(state)
     #print("predictions: ", predictions)
     #predictions = model.predict(state)
     #print("predictions: ", predictions)
