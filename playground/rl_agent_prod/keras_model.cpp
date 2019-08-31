@@ -10,7 +10,8 @@ int main(int argc, char** argv)
     const auto bit_macro = fdeep::load_model("./rl_agent_prod/bits_macro.json");
     bool game = true;
     std::string input_string;
-    
+
+    std::cout<< "Waiting for line" << std::endl;
     std::getline (std::cin, input_string); // get state
     float bits = std::stod(input_string.substr(0,1));
     float cores = std::stod(input_string.substr(1,1));
