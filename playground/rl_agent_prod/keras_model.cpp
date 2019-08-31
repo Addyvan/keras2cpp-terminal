@@ -30,11 +30,11 @@ int main(int argc, char** argv)
     std::vector<int> bits_sequence;
     
     while (bits >= 1) {
-        const auto result = bit_macro.predict({input_data});
+        const auto result = bit_macro.predict({state});
         std::cout << fdeep::show_tensor5s(result) << std::endl;
         bits -= 1;
     }
-    
+
     //std::cerr << "output: " << fdeep::show_tensor5s(result) << "\n";
 
     return 0;
