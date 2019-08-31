@@ -21,6 +21,7 @@ class KerasCPPModel:
 
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+        """
         while not self.proc.poll():
             print("icit")
             line = self.proc.stderr.readline().decode("utf-8")
@@ -31,7 +32,7 @@ class KerasCPPModel:
                 break
             time.sleep(1)
             print("trying")
-            
+        """ 
         #eprint("model initialized to python")
 
     def order_predictions(self, predictions):
@@ -54,7 +55,7 @@ class KerasCPPModel:
         state[: -1] # remove trailing comma
 
         self.proc.stdin.write(state_string.encode('utf-8'))
-        self.proc.stdin.flush()
+        #self.proc.stdin.flush()
 
         #test = self.proc.stderr.read_line()
 
