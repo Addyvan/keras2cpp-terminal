@@ -58,7 +58,7 @@ class KerasCPPModel:
         
         self.proc.stdin.write(state_string.encode('utf-8'))
         time.sleep(1)
-        print(self.proc.stderr.decode('utf-8'))
+        print(self.proc.stderr)
         '''
         while self.proc.poll() is None:
             line = self.proc.stderr.readlines()
