@@ -58,7 +58,7 @@ class KerasCPPModel:
         
         self.proc.stdin.write(state_string.encode('utf-8'))
         #self.proc.stdin.flush()
-print(self.proc)
+        print(self.proc)
         test = self.proc.stderr.read_line()
 
         print("ICIT: ", test)
