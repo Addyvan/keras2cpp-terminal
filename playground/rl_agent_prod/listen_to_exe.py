@@ -60,7 +60,7 @@ for i in range(5):
         #outs, errs = proc.communicate()
         proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
 
-
+    print(proc.poll())
     parse_results(errs)
     time.sleep(2)
 
