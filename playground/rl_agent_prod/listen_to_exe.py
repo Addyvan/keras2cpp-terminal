@@ -50,7 +50,7 @@ def parse_results(data):
     ordered_predictions = order_predictions(predictions)
     return ordered_predictions
 
-process_command = "./ping"
+process_command = "./keras_model ./fdeep_ping.json"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
 for i in range(5):
     try:
