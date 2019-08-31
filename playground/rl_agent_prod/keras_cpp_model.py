@@ -22,10 +22,10 @@ class KerasCPPModel:
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
         time.sleep(1)
-        
+        """
         while not self.proc.poll():
             print("icit")
-            line = self.proc.stderr.readline().decode("utf-8")
+            line = self.proc.stderr.readline()s.decode("utf-8")
             print("laba")
             if len(line) > 0:
                 print("LINE: ", line)
@@ -33,7 +33,7 @@ class KerasCPPModel:
                 break
             time.sleep(1)
             print("trying")
-        
+        """
         print("model initialized to python")
 
     def order_predictions(self, predictions):
@@ -59,7 +59,7 @@ class KerasCPPModel:
         self.proc.stdin.write(state_string.encode('utf-8'))
         
         while self.proc.poll() is None:
-            line = self.proc.stderr.readline()
+            line = self.proc.stderr.readlines()
             print(line)
         
 
