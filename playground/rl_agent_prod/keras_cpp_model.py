@@ -51,11 +51,11 @@ class KerasCPPModel:
             proc.kill()
             outs, errs = self.proc.communicate()
 
-        if self.proc.poll() != None:
-            self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+        #if self.proc.poll() != None:
+        #    self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
             
 
-        return self.parse_results(errs.decode('utf-8').encode('utf-8'))
+        #return self.parse_results(errs.decode('utf-8').encode('utf-8'))
 
     def shut_off(self):
         self.proc.stdin.write("END_GAME".encode('utf-8'))
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     print("model loaded")
     state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
     print("making prediction")
-    predictions = model.predict(state)
-    print("predictions: ", predictions)
-    predictions = model.predict(state)
-    print("predictions: ", predictions)
+    #predictions = model.predict(state)
+    #print("predictions: ", predictions)
+    #predictions = model.predict(state)
+    #print("predictions: ", predictions)
