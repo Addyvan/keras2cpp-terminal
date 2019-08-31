@@ -21,7 +21,7 @@ class KerasCPPModel:
 
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-        time.sleep(1)
+        #time.sleep(1)
         print("model initialized to python")
 
     def order_predictions(self, predictions):
@@ -51,8 +51,9 @@ class KerasCPPModel:
         except TimeoutExpired:
             proc.kill()
             outs, errs = self.proc.communicate()
-        
 
+        if self.proc.poll() != None:
+            self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
             
 
         return self.parse_results(errs.decode('utf-8').encode('utf-8'))
