@@ -21,7 +21,7 @@ class KerasCPPModel:
 
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-        #time.sleep(1)
+        time.sleep(1)
         print("model initialized to python")
 
     def order_predictions(self, predictions):
