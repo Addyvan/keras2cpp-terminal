@@ -32,10 +32,10 @@ class KerasCPPModel:
     def parse_results(self, data):
         data = data.decode('utf-8')
         data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
-        print([pred.replace(" ", "") for pred in data.split(",")])
-        #predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-        #ordered_predictions = self.order_predictions(predictions)
-        #return ordered_predictions
+        #print([pred.replace(" ", "") for pred in data.split(",")])
+        predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
+        ordered_predictions = self.order_predictions(predictions)
+        return ordered_predictions
 
     def predict(self, state):
         state_string = ""
