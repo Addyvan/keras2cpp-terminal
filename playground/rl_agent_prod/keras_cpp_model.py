@@ -21,6 +21,7 @@ class KerasCPPModel:
 
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+        time.sleep(1)
         """
         while not self.proc.poll():
             print("icit")
@@ -74,7 +75,7 @@ if __name__ == "__main__":
     print("loading model")
     model = KerasCPPModel()
     print("model loaded")
-    #state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
-    #print("making prediction")
-    #predictions = model.predict(state)
-    #print("predictions: ", predictions)
+    state = [[random.randint(0,3) for j in range(6)] for i in range(420)]
+    print("making prediction")
+    predictions = model.predict(state)
+    print("predictions: ", predictions)
