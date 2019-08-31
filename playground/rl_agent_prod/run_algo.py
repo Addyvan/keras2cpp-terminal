@@ -43,7 +43,7 @@ class RLProdBot(AlgoBase):
         self.execute_cores_macro(cores)
         self.execute_bits_macro(bits)
         end = time.time()
-        print("TURN {} took {} seconds".format(self.game_state.turn_number, end-start))
+        eprint("TURN {} took {} seconds".format(self.game_state.turn_number, end-start))
 
 
     def execute_bits_macro(self, bits):
