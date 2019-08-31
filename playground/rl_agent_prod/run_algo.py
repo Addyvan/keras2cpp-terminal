@@ -3,9 +3,8 @@ import sys
 import os.path as path
 sys.path.append(path.abspath(path.join(__file__ ,"../..")))
 
-#import numpy as np
-#from keras.models import load_model
 import random
+import time
 
 from algolib.algo_base import AlgoBase
 from algolib.util import eprint
@@ -33,6 +32,7 @@ class RLProdBot(AlgoBase):
         """
         Runs every turn
         """
+        start = time.time()
         self.this_turn_spawns = [] # NEED TO IMPLEMENT THIS
         self.state = create_state_matrix(self.p1Units, self.p2Units, self.this_turn_spawns)
 
@@ -42,6 +42,8 @@ class RLProdBot(AlgoBase):
 
         self.execute_cores_macro(cores)
         self.execute_bits_macro(bits)
+        end = time.time()
+        print("TURN {} took {} seconds".format(self.game_state.turn_number, end-start))
 
 
     def execute_bits_macro(self, bits):
