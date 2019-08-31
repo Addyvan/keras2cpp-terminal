@@ -58,7 +58,7 @@ class KerasCPPModel:
         
         self.proc.stdin.write(state_string.encode('utf-8'))
         while self.proc.poll() is None:
-            line = sub.stdout.read(64)
+            line = self.proc.stderr.read(64)
             line.strip("\b")
             print(line)
         #test = self.proc.stderr.read_line()
