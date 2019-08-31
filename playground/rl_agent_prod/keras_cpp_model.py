@@ -20,7 +20,7 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
         #time.sleep(1)
         print("model initialized to python")
 
@@ -53,7 +53,7 @@ class KerasCPPModel:
             outs, errs = self.proc.communicate()
 
         if self.proc.poll() != None:
-            self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
+            self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
             
 
         return self.parse_results(errs.decode('utf-8').encode('utf-8'))
