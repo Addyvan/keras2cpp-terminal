@@ -2,6 +2,7 @@ from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
 import random
+import time
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -20,12 +21,13 @@ class KerasCPPModel:
 
     def _run_cpp_instance(self):
         self.proc = Popen(self.process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-        while True:
+        while not self.proc.poll():
             line = self.proc.stderr.readlines().decode("utf-8")
             if len(line) > 0:
                 print("LINE: ", line)
             if line.find("Waiting for line") != - 1:
                 break
+                time.sleep(1)
             
         #eprint("model initialized to python")
 
