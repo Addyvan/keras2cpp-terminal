@@ -16,8 +16,7 @@ int main(int argc, char** argv)
         std::cout << "Waiting to receive state" << std::endl;
 
         std::getline (std::cin, input_string);
-
-        std::cout << "Received state: " << input_string<< std::endl;
+        //std::cout << "Received state: " << input_string<< std::endl;
         if (input_string != "END_GAME") {
             float string_num = std::stod(input_string.substr(0,1));
 
@@ -34,7 +33,6 @@ int main(int argc, char** argv)
             const auto result = model.predict({input_data});
             std::cerr << "output: " << fdeep::show_tensor5s(result);
             input_string = "";
-            //game = false; // since we are currently YOLO just negate this logic for now
         } else {
             game = false;
         }

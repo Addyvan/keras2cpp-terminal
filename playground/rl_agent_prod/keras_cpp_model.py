@@ -57,11 +57,13 @@ class KerasCPPModel:
 
         
         self.proc.stdin.write(state_string.encode('utf-8'))
-        #self.proc.stdin.flush()
-        print(self.proc)
-        test = self.proc.stderr.read_line()
+        while self.proc.poll() is None:
+            line = sub.stdout.read(64)
+            line.strip("\b")
+            print(line)
+        #test = self.proc.stderr.read_line()
 
-        print("ICIT: ", test)
+        #print("ICIT: ", test)
         
         #outs, errs = self.proc.communicate()
             
