@@ -19,7 +19,7 @@ class KerasCPPModel:
         self._run_cpp_instance()
 
     def _run_cpp_instance(self):
-        self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=sys.stderr, stdin=PIPE)
+        self.proc = Popen(self.process_command, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
         while True:
             line = self.proc.stderr.readline().decode("utf-8")
             if line.find("Waiting for line") != - 1:
