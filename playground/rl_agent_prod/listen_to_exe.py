@@ -45,8 +45,9 @@ def parse_results(data):
     data = data.decode('utf-8')
     data = data.split("\n")[0].replace("[", "").replace("]", "").replace("output: ", "")
     predictions = [float(pred.replace(" ", "")) for pred in data.split(",")]
-    ordered_predictions = self.order_predictions(predictions)
-    return ordered_predictions
+    print(predictions)
+    #ordered_predictions = self.order_predictions(predictions)
+    #return ordered_predictions
 
 process_command = "./keras_model ./fdeep_ping.json"
 proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
