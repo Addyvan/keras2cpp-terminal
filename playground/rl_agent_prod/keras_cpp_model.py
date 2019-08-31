@@ -57,14 +57,11 @@ class KerasCPPModel:
 
         
         self.proc.stdin.write(state_string.encode('utf-8'))
-        """
+        
         while self.proc.poll() is None:
-            line = self.proc.stderr.read(64)
-            line.strip("\b")
+            line = self.proc.stderr.readline()
             print(line)
-        """
-        for line in self.proc.stderr.read_lines():
-            print("here: ", line)
+        
 
         #print("ICIT: ", test)
         
