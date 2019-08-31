@@ -70,3 +70,5 @@ if __name__ == "__main__":
     print("making prediction")
     predictions = model.predict(state)
     print("predictions: ", predictions)
+    predictions = model.predict(state)
+    print("predictions: ", predictions)
