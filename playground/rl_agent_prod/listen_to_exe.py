@@ -56,11 +56,11 @@ for i in range(5):
         proc.stdin.write(str(i).encode('utf-8'))
         outs, errs = proc.communicate()
     except TimeoutExpired:
-        #proc.kill()
-        #outs, errs = proc.communicate()
+        proc.kill()
+        outs, errs = proc.communicate()
+        
+    if proc.poll != None:
         proc = Popen(process_command, shell=True, stdout=sys.stdout, stderr=PIPE, stdin=PIPE)
-
-    print(proc.poll())
     parse_results(errs)
     time.sleep(2)
 
