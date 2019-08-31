@@ -23,7 +23,11 @@ class RLProdBot(AlgoBase):
 
 
     def load_models(self):
-        self.ping_model = KerasCPPModel("./rl_agent_prod/fdeep_ping.json")
+        self.bits_macro_model = KerasCPPModel("./nnets/fdeep_bits_macro.json")
+        self.cores_macro_model = KerasCPPModel("./nnets/fdeep_cores_macro.json")
+        self.ping_model = KerasCPPModel("./nnets/fdeep_ping.json")
+        self.emp_model = KerasCPPModel("./nnets/fdeep_emp.json")
+        self.scrambler_model = KerasCPPModel("./nnets/fdeep_scrambler.json")
 
     def on_turn(self, json_state):
         """
@@ -48,7 +52,7 @@ class RLProdBot(AlgoBase):
         action_sequence = []
         while bits >= 1:
             #action = np.argmax(self.macro_bits_model.predict(self.state.reshape((1, 420,6)))[0])
-            action = random.randint(0,3)
+            action = self.bits_macro_model.predict(self.state)[0]
             if action == 0:
                 bits -= 1
             elif action == 1:
@@ -63,20 +67,13 @@ class RLProdBot(AlgoBase):
             if action == 0:
                 continue
             elif action == 1:
-                ping_loc_recommendations = self.ping_model.predict(self.state)
-                eprint("HEREE:::  ", ping_loc_recommendations)
-                ping_loc = random.randint(0,27)
-                self.spawn_ping(ping_loc)
+                self.spawn_ping(self.ping_model.predict(self.state)[0])
                 continue
             elif action == 2:
-                #emp_loc = np.argmax(self.emp_model.predict(self.state.reshape((1, 420,6)))[0])
-                emp_loc = random.randint(0,27)
-                self.spawn_emp(emp_loc)
+                self.spawn_emp(self.emp_model.predict(self.state)[0])
                 continue
             elif action == 3:
-                #scrambler_loc = np.argmax(self.scrambler_model.predict(self.state.reshape((1, 420,6)))[0])
-                scrambler_loc = random.randint(0,27)
-                self.spawn_scrambler(scrambler_loc)
+                self.spawn_scrambler(self.scrambler_model.predict(self.state)[0])
 
     def execute_cores_macro(self, cores):
         """
@@ -86,7 +83,7 @@ class RLProdBot(AlgoBase):
         action_sequence = []
         while cores >= 1:
             #action = np.argmax(self.macro_cores_model.predict(self.state.reshape((1, 420,6)))[0])
-            action = random.randint(0,3)
+            action = self.cores_macro_model.predict(self.state)[0]
             if action == 0:
                 cores -= 1
             elif action == 1:
