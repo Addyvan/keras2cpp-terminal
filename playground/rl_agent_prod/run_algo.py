@@ -40,7 +40,7 @@ class RLProdBot(AlgoBase):
         bits = self.game_state.get_resource(self.game_state.BITS)
         cores = self.game_state.get_resource(self.game_state.CORES)
 
-        eprint("ICIT " + time.time() - start)
+        eprint("ICIT " + str(time.time() - start))
         self.execute_cores_macro(cores)
         self.execute_bits_macro(bits)
         end = time.time()
